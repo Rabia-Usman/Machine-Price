@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace challange1_Csharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int money = 0, increase_money = 0 ,value = 10, count = 0;
+            float Total_Amount = 0, Remain_Amount = 0;
+            int num_calculate = 0;
+            int age = 0 , Price_Toy = 0;
+            int Sum_of_T_Price = 0;
+            float Price_Washing_Machine;
+            Console.WriteLine("Enter your age(1-77) : ");
+            age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Price of Washing Machine : ");
+            Price_Washing_Machine = float.Parse(Console.ReadLine());
+            Console.WriteLine("Enter unit price of each toy : ");
+            Price_Toy= int.Parse(Console.ReadLine());
+            for(int i = 1; i <= age; i++)
+            {
+                num_calculate = i% 2;
+                if (num_calculate == 0)
+                {
+                    increase_money = increase_money + value ;//money on even years
+                    value = value + 10;
+                    count++;
+                }
+                else
+                {
+                    Sum_of_T_Price = Sum_of_T_Price + Price_Toy;//toys on odd years
+                }
+            }
+            Console.WriteLine("Money " + increase_money);
+            money = increase_money-count;
+            Total_Amount = money + Sum_of_T_Price;
+            if (Total_Amount >= Price_Washing_Machine)
+            {
+                Remain_Amount = Total_Amount - Price_Washing_Machine;
+                Console.WriteLine("Yes! " + Remain_Amount);
+                Console.ReadKey();
+            }
+            else
+            {
+                Remain_Amount = Price_Washing_Machine - Total_Amount;
+                Console.WriteLine("NO! " + Remain_Amount);
+                Console.ReadKey();
+            }
+        }
+    }
+}
